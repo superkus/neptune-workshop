@@ -1490,7 +1490,7 @@ Using out EC2 bastion instance (that already has access to the S3 bucket where w
     </main>
 
     <footer class="container">
-        <p>&copy; AWSome Flights 2018</p>
+        <p>&copy; AWSome Flights</p>
     </footer>
 
     <!-- JavaScript -->
