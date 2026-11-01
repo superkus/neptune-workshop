@@ -137,13 +137,13 @@ We will use S3 to host the frontend of our application and also to store the dat
 
 Create an S3 bucket that will be used to host the static web application. 
 ```bash
-aws s3 mb s3://your-unique-name.neptune-workshop-2018-tech-summit
+aws s3 mb s3://your-unique-name.neptune-workshop
 ```
 
 Create a CloudFront disitrbution for the S3 bucket and keep note of the value of DomainName
 ```bash
 aws cloudfront create-distribution \
-  --origin-domain-name your-unique-name.neptune-workshop-2018-tech-summit.s3.amazonaws.com \
+  --origin-domain-name your-unique-name.neptune-workshop.s3.amazonaws.com \
   --default-root-object index.html
 ```
 
@@ -153,7 +153,7 @@ Make sure you **secure the bucket** by [restricting Access to Amazon S3 Content 
 Optionally, see if it works:
 ```bash
 echo "howdy!" > /tmp/index.html
-aws s3 cp /tmp/index.html s3://your-unique-name.neptune-workshop-2018-tech-summit/
+aws s3 cp /tmp/index.html s3://your-unique-name.neptune-workshop/
 
 #(wait a bit...)
 
@@ -164,7 +164,7 @@ curl <your-CF-distribution-domain-name>
 
 Create a second bucket to store and load content to Neptune 
 ```bash
-aws s3 mb s3://your-unique-name-data.neptune-workshop-2018-tech-summit
+aws s3 mb s3://your-unique-name-data.neptune-workshop
 ```
 
 #### S3 endpoint
@@ -253,8 +253,8 @@ Create the following policy **neptune2S3Policy** and then create the role **nept
                 "s3:GetObjectVersion"
             ],
             "Resource": [
-                "arn:aws:s3:::your-unique-name-data.neptune-workshop-2018-tech-summit",
-                "arn:aws:s3:::your-unique-name-data.neptune-workshop-2018-tech-summit/*"
+                "arn:aws:s3:::your-unique-name-data.neptune-workshop",
+                "arn:aws:s3:::your-unique-name-data.neptune-workshop/*"
             ]
         },
         {
@@ -333,7 +333,7 @@ In order to deploy the Lambda functions from an EC2 instance create a policy nam
 ```
 
 #### Allow bulk upload to bucket
-Create a policy named **uploadBulkDataforNeptunePolicy** that allows List, Read and Write access to both the data bucket and to the bucket where we will stoer the application static content, name it **your-unique-name-data.neptune-workshop-2018-tech-summit** and add it to the previous role **bulk2S3forNeptune_deployLambdaonVPCRole** that we will assign to a EC2  instance.
+Create a policy named **uploadBulkDataforNeptunePolicy** that allows List, Read and Write access to both the data bucket and to the bucket where we will stoer the application static content, name it **your-unique-name-data.neptune-workshop** and add it to the previous role **bulk2S3forNeptune_deployLambdaonVPCRole** that we will assign to a EC2  instance.
 
 ```json
 {
@@ -407,10 +407,10 @@ Create a policy named **uploadBulkDataforNeptunePolicy** that allows List, Read 
                 "s3:ReplicateDelete"
             ],
             "Resource": [
-                "arn:aws:s3:::your-unique-name-data.neptune-workshop-2018-tech-summit",
-                "arn:aws:s3:::your-unique-name-data.neptune-workshop-2018-tech-summit/*",
-                "arn:aws:s3:::your-unique-name.neptune-workshop-2018-tech-summit",
-                "arn:aws:s3:::your-unique-name.neptune-workshop-2018-tech-summit/*"
+                "arn:aws:s3:::your-unique-name-data.neptune-workshop",
+                "arn:aws:s3:::your-unique-name-data.neptune-workshop/*",
+                "arn:aws:s3:::your-unique-name.neptune-workshop",
+                "arn:aws:s3:::your-unique-name.neptune-workshop/*"
             ]
         },
         {
@@ -746,9 +746,9 @@ ls -la *latest*csv
 -rw-rw-r-- 1 ec2-user ec2-user 1364322 Oct 22 11:24 air-routes-latest-edges.csv
 -rw-rw-r-- 1 ec2-user ec2-user  408915 Oct 22 11:24 air-routes-latest-nodes.csv
 
-aws s3 cp air-routes-latest-edges.csv s3://your-unique-name-data.neptune-workshop-2018-tech-summit
+aws s3 cp air-routes-latest-edges.csv s3://your-unique-name-data.neptune-workshop
 
-aws s3 cp air-routes-latest-nodes.csv s3://your-unique-name-data.neptune-workshop-2018-tech-summit
+aws s3 cp air-routes-latest-nodes.csv s3://your-unique-name-data.neptune-workshop
 ```
 
 #### Load data from S3
@@ -761,7 +761,7 @@ curl -X POST \
         -H 'Content-Type: application/json' \
         http://YOUR-NEPTUNE-CLUSTER-RW-ENDPOINT:8182/loader -d '
         { 
-          "source" : "s3://your-unique-name-data.neptune-workshop-2018-tech-summit/air-routes-latest-nodes.csv",
+          "source" : "s3://your-unique-name-data.neptune-workshop/air-routes-latest-nodes.csv",
           "format" : "csv",  
           "iamRoleArn" : "arn:aws:iam::YOUR-ACCOUNT-ID:role/neptune2S3Role",
           "region" : "eu-west-1",
@@ -772,7 +772,7 @@ curl -X POST \
         -H 'Content-Type: application/json' \
         http://YOUR-NEPTUNE-CLUSTER-RW-ENDPOINT:8182/loader -d '
         { 
-          "source" : "s3://your-unique-name-data.neptune-workshop-2018-tech-summit/air-routes-latest-edges.csv",
+          "source" : "s3://your-unique-name-data.neptune-workshop/air-routes-latest-edges.csv",
           "format" : "csv",  
           "iamRoleArn" : "arn:aws:iam::YOUR-ACCOUNT-ID:role/neptune2S3Role",
           "region" : "eu-west-1",
@@ -1603,7 +1603,7 @@ Let's edit the API gateway endpoint in the javascript file and then let's upload
 
 cd $HOME/neptune/www
 curl -O https://airports.carloscarus.me/city.jpg
-aws s3 sync --delete . s3://your-unique-name.neptune-workshop-2018-tech-summit --cache-control max-age=3600
+aws s3 sync --delete . s3://your-unique-name.neptune-workshop --cache-control max-age=3600
 ```
 
 ## Well done!
