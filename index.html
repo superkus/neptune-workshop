@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <title>AWSome Flights</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Business Flights</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Leisure FLights</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Contact us</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">We will call you</a>
+                        <a class="dropdown-item" href="#">Via email</a>
+                        <a class="dropdown-item" href="#">Come visit us</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <main role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3"><span style="font-weight:900;color:#ff9900">AWS</span>ome Flights Route Finder</h1>
+                <p>Please tell us the trip of your dreams and we will find the best routes for you!</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>1) Select your Origin</h2>
+                    <p>
+                        Where are you flying from? Please enter the name of the city or the IATA code, if you know it.
+                    </p>
+
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">From:</span>
+                            </div>
+                            <input id="orig" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Enter the City name here">
+                        </div>
+
+
+                </div>
+                <div class="col-md-4">
+                    <h2>2) Pick your Destination</h2>
+                    <p>  
+                         Any dream destination? Please enter the name of the City or, if you know it, the IATA code.
+                    </p>
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">To:</span>
+                            </div>
+                            <input id="dest" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Enter the City name here">
+                        </div>
+                </div>
+                <div class="col-md-4">
+                    <h2>3) Let's look for it!</h2>
+                    <p>
+                          If you are satisfied with your selections, let's go and look for the trip!                      
+                    </p>
+                    <p>
+                    <a id="search" class="btn btn-primary btn-lg" href="#" role="button">Search &raquo;</a>
+                    </p>
+                </div>
+            </div>
+
+            <hr>
+
+        </div>
+        <!-- /container -->
+        <div class="container" id="results">
+        </div>
+
+    </main>
+
+    <footer class="container">
+        <p>&copy; AWSome Flights 2018</p> - <a href=readme.html>tutorial</a>
+    </footer>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="jquery.autocomplete.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="awsomeflights.js"></script>
+</body>
+
+</html>
