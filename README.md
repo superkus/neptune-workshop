@@ -1051,9 +1051,6 @@ Now that we have the code that we want to run and we validate it is working as e
 #
 # airportlist resource
 #
-# Copyright 2018 Amazon.com, Inc. or its affiliates.
-# All Rights Reserved.
-#
 # Created by Carlos Carus, kus@kus.es
 #
 # Licensed under the Apache License, Version 2.0 (the "License").
@@ -1203,9 +1200,6 @@ Now that we now the code that we want to run and we validate it is working as ex
 # routefinder - Neptune Demo for airport conenctions
 # requires - origin (IATA code), destination (IATA code)
 
-# Copyright 2018 Amazon.com, Inc. or its affiliates.
-# All Rights Reserved.
-#
 # Created by: carlos carus - kus@kus.es
 # 
 # Licensed under the Apache License, Version 2.0 (the "License").
